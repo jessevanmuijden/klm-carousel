@@ -1,15 +1,21 @@
-<div class="carousel">
-  <div class="slides">
-    <app-slide *ngFor="let slide of slides; let i=index"
-               class="slide"
-               [slide]="slide"
-               [ngClass]="{active: isActive(i), previous: isPrevious(i), forward: isMovingForward(direction), backward: isMovingBackward(direction)}"></app-slide>
+<div class="carousel-container">
+  <div class="carousel">
+    <div class="slides">
+      <app-slide
+        *ngFor="let slide of slides; let i=index"
+        class="slide"
+        [slide]="slide"
+        [ngClass]="{active: isActive(i), previous: isPrevious(i), forward: isMovingForward(direction), backward: isMovingBackward(direction)}"
+      ></app-slide>
+    </div>
+    <app-arrows
+      (selectSlide)="selectSlide($event)"
+      class="arrows"
+    ></app-arrows>
+    <app-pins
+      class="pins"
+      [selectedIndex]="slideIndex"
+      [slides]="slides"
+    ></app-pins>
   </div>
-  <app-arrows (selectSlide)="selectSlide($event)"
-              class="arrows"></app-arrows>
-  <app-pins
-          class="pins"
-          [selectedIndex]="slideIndex"
-          [slides]="slides"
-  ></app-pins>
 </div>

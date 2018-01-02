@@ -4,15 +4,15 @@ import { HttpClientModule } from '@angular/common/http'
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 
-import { AppComponent } from './app.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { ArrowsComponent } from './arrows/arrows.component';
 import { PinsComponent } from './pins/pins.component';
 import { SlideComponent } from './slide/slide.component';
+import {Http, BaseRequestOptions} from "@angular/http";
+import {MockBackend} from "@angular/http/testing";
 
 @NgModule({
   declarations: [
-    AppComponent,
     CarouselComponent,
     ArrowsComponent,
     PinsComponent,
@@ -25,7 +25,14 @@ import { SlideComponent } from './slide/slide.component';
         InMemoryDataService, { dataEncapsulation: false }
     )
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    MockBackend,
+    {
+      provide: Http,
+      deps: [MockBackend, BaseRequestOptions],
+      useFactory: (backend, options) => { return new Http(backend, options); }
+    }
+  ],
+  bootstrap: [ CarouselComponent ]
 })
 export class AppModule { }

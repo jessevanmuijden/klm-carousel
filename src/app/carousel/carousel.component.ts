@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SlideService } from '../slide.service';
-import { Slide } from "../slide";
+import { Slide } from '../slide';
 
 @Component({
   selector: 'app-carousel',
@@ -9,24 +9,21 @@ import { Slide } from "../slide";
   providers: [ SlideService ],
 })
 export class CarouselComponent implements OnInit {
-  private DIRECTION_NEXT = 'next';
-  private DIRECTION_PREVIOUS = 'previous';
+  private DIRECTION_FORWARD: string = 'forward';
+  private DIRECTION_BACKWARD: string = 'backward';
   slides: Slide[];
   slideIndex: number = 0;
   previousSlideIndex: number;
   direction: string;
 
-  constructor(private slideService: SlideService) {
-    this.slideIndex = 0;
-  }
+  constructor(private slideService: SlideService) { }
 
   ngOnInit() {
     this.getSlides();
   }
 
   getSlides() : void {
-    this.slideService.getSlides()
-        .subscribe(slides => this.slides = slides);
+    this.slideService.getSlides().subscribe(slides => this.slides = slides);
   }
 
   selectSlide(direction: string) {
@@ -35,7 +32,7 @@ export class CarouselComponent implements OnInit {
     }
     this.direction = direction;
     this.previousSlideIndex = this.slideIndex;
-    this.slideIndex = (direction == this.DIRECTION_NEXT ? this.nextSlide() : this.previousSlide());
+    this.slideIndex = (direction == this.DIRECTION_FORWARD ? this.nextSlide() : this.previousSlide());
   }
 
   nextSlide() : number {
@@ -55,10 +52,10 @@ export class CarouselComponent implements OnInit {
   }
 
   isMovingForward(direction: string) : boolean {
-    return (direction === this.DIRECTION_NEXT);
+    return (direction === this.DIRECTION_FORWARD);
   }
 
   isMovingBackward(direction: string) : boolean {
-    return (direction === this.DIRECTION_PREVIOUS);
+    return (direction === this.DIRECTION_BACKWARD);
   }
 }

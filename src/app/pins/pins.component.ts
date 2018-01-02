@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-import {Slide} from "../slide";
+import { Component, Input } from '@angular/core';
+import { Slide } from '../slide';
 
 @Component({
   selector: 'app-pins',
@@ -10,7 +10,7 @@ export class PinsComponent {
   @Input() selectedIndex: number;
   @Input() slides: Slide[];
 
-  isActive(index: number) : boolean {
+  isActive(index: number): boolean {
     return (this.selectedIndex === index);
   }
 }
