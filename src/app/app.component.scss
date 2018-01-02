@@ -1,0 +1,15 @@
+@import "~sass/variables";
+
+:host {
+  display: block;
+}
+
+@media (min-width: $tablet-min-width) {
+  :host {
+    padding: 84px 0;
+  }
+
+  :host-context(.theme-dark) {
+    background-color: $background-color-dark;
+  }
+}

@@ -1,0 +1,57 @@
+@import '~sass/variables';
+
+:host {
+  width: 100%;
+  height: 55%;
+  position: absolute;
+}
+
+div {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  &:first-child {
+    left: 0;
+
+    svg {
+      left: 40px;
+    }
+  }
+
+  &:last-child {
+    right: 0;
+    text-align: right;
+
+    svg {
+      right: 40px;
+    }
+  }
+
+  svg {
+    position: absolute;
+    zoom: 50%;
+
+    polyline {
+      transition: all 250ms linear;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    polyline {
+      stroke-width: 3;
+    }
+  }
+}
+
+@media (min-width: $tablet-min-width) {
+  :host {
+    width: 50%;
+    height: 90%;
+    position: absolute;
+  }
+}

@@ -1,0 +1,51 @@
+@import '~sass/variables';
+
+:host {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding-top: 140%;
+}
+
+.carousel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  .slides {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+@media (min-width: $tablet-min-width) {
+  :host {
+    padding-top: 36%;
+  }
+
+  .carousel {
+    width: 88%;
+    left: 6%;
+    margin: 0 auto;
+
+    .slides {
+      height: 90%;
+    }
+  }
+}
+
+@media (min-width: $desktop-min-width) {
+  :host {
+    padding-top: 28%;
+  }
+
+  .carousel {
+    width: 90%;
+    height: 100%;
+    left: 5%;
+  }
+}
