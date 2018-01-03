@@ -1,18 +1,33 @@
-# AngularCarousel
+# KLM carousel
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.9.
+A custom carousel implementation according to specifications described here: [https://bitbucket.org/afklmdevnet/carousel](https://bitbucket.org/afklmdevnet/carousel).
+The carousel is responsive and fetches data asynchronously. I chose the content carousel with dark and light background variation. 
 
+## Specifications
+
+ - Pins should not be clickable
+ - Arrows are always visible
+ - A given amount of text should always fit into the text container of a slide
+ 
+The icon assets were not provided in the assignment repository, so I improvised. 
+
+## Bonus
+
+I had no time to actually create a second version without JavaScript. I would have used the approach demonstrated 
+[here](https://codepen.io/trungk18/pen/EydyoL). I think it is better than [the solution](https://codepen.io/haykou/pen/vOyXYX) that leverages the CSS `:target`` because 
+that relies on changing the fragment of the URL which can interfere with Angular routing or the general browsing experience 
+of the user. 
+
+## Considerations
+
+ ### Animations
+
+All animations are implemented in CSS instead of JavaScript, mainly because it is easier to maintain since there is no 
+business logic involved that would require extra testing.
+ 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Run `ng serve --open` to serve the app on `http://localhost:4200/` and view it in the browser.
 
 ## Running unit tests
 
@@ -21,7 +36,3 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ## Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
