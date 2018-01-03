@@ -8,8 +8,6 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { ArrowsComponent } from './arrows/arrows.component';
 import { PinsComponent } from './pins/pins.component';
 import { SlideComponent } from './slide/slide.component';
-import {Http, BaseRequestOptions} from "@angular/http";
-import {MockBackend} from "@angular/http/testing";
 
 @NgModule({
   declarations: [
@@ -25,14 +23,7 @@ import {MockBackend} from "@angular/http/testing";
         InMemoryDataService, { dataEncapsulation: false }
     )
   ],
-  providers: [
-    MockBackend,
-    {
-      provide: Http,
-      deps: [MockBackend, BaseRequestOptions],
-      useFactory: (backend, options) => { return new Http(backend, options); }
-    }
-  ],
+  providers: [],
   bootstrap: [ CarouselComponent ]
 })
 export class AppModule { }
